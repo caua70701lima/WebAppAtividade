@@ -1,3 +1,4 @@
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,6 +17,15 @@ public class ValidarLoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        String nome = req.getParameter("username");
+        String senha = req.getParameter("password");
+
+        if ("admin".equals(nome) && "admin".equals(senha)) {
+            RequestDispatcher rd = req.getRequestDispatcher("/bemvindo.jsp");
+            rd.forward(req, resp);
+        } else  {
+            resp.sendRedirect("index.html");
+        }
 
     }
 }
