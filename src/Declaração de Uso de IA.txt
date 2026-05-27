@@ -1,0 +1,32 @@
+Ferramenta utilizada:
+- ChatGPT (OpenAI)
+
+Tipo de uso:
+- Geração de códigos de front-end (HTML e CSS);
+- Explicação de conceitos relacionados à Servlets, JSP e redirecionamentos;
+- Explicação da fórmula e funcionamento do método PRICE;
+- Suporte para resolução de problemas de configuração envolvendo Jakarta Servlet no pom.xml e TomCat Server.
+
+Análise das respostas da IA:
+A ferramenta ajudou principalmente no entendimento de alguns conceitos da atividade, na construção visual das páginas
+e a identificar problemas de configuração relacionados ao uso do Jakarta Servlet no Tomcat 11.
+
+Durante o desenvolvimento, algumas respostas precisaram ser ajustadas manualmente, principalmente em relação:
+- ao funcionamento do Expression Language (${...}) no JSP;
+- à configuração correta do Maven e do deployment no IntelliJ;
+- à ajustes em parametros recebidos no JSP.
+Exemplo:
+
+Código gerado:
+"<h2>
+Parcela mensal:
+R$ ${resultadoParcela}
+</h2>"
+
+Correção:
+"<h2>
+Parcela mensal:
+R$ <%out.print(request.getAttribute("resultadoParcela"));%>
+</h2>"
+
+As respostas fornecidas pela IA foram utilizadas como apoio e devidamente revisadas antes da implementação final no projeto.

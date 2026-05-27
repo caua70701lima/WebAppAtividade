@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 @WebServlet("/simulationServlet")
 public class SimulationServlet extends HttpServlet {
@@ -38,25 +39,14 @@ public class SimulationServlet extends HttpServlet {
 
         valorParcela = valorFinanc * (taxaJuros * Math.pow((1+taxaJuros), prazoFinanc)) / (Math.pow((1+taxaJuros), prazoFinanc) - 1);
 
+        DecimalFormat df = new DecimalFormat("0.00");
+        String resultadoParcela = df.format(valorParcela);
 
-        resp.setContentType("text/html;charset=UTF-8");
+        req.setAttribute("resultadoParcela", resultadoParcela);
 
-        resp.getWriter().println("""
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Resultado</title>
-        </head>
-        <body>
-
-            <h1>Resultado da Simulação</h1>
-
-            <h2>Valor da parcela: R$: """ + valorParcela + """
-            </h2>
-
-        </body>
-        </html>
-        """);
+        RequestDispatcher rd =
+                req.getRequestDispatcher("/results.jsp");
+        rd.forward(req, resp);
 
     }
 }
