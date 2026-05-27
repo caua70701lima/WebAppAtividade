@@ -68,7 +68,7 @@
 
 <body>
 
-<form id="simulation">
+<form id="simulation" action="simulationServlet" method="POST">
 
     <h1>Simulação</h1>
 
